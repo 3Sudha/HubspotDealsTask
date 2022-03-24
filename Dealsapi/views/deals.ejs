@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Details of Deals </title>
+    <style>
+        body
+        {
+            padding:0;
+            margin: 0;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: white;
+        }
+        
+        #show th, #show td{
+        padding: 13px;
+        background-color: #c7c2b5;
+        }
+
+        a:link, a:visited {
+  background-color:#555555;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+a:hover, a:active {
+  background-color: #555555;
+}
+    </style>
+   </head>
+    <body>
+        
+       <table border="6" id="show">
+       <thead>
+        <tr>
+           <td colspan="8"> <center> <font size=8> <b>Deatils of Deals </b> </font> </center> </td>
+        </tr>
+        <tr>
+           <th>Deal Name</th>
+           <th>Deal Amount</th>
+           <th>Create Date</th>
+           <th>Deal stage</th>
+           <th colspan="4">Update Deal stage</th> -->
+        </tr>
+        <%  newdeals.forEach(function(item){ %>
+            <tr>
+                <th><%=item.properties.dealname%></th>
+                <th><%=item.properties.amount%></th>
+                <th><%=item.properties.createdate%></th>
+                <th><%=item.properties.dealstage%></th>
+                <th><form action="/deals" method="post"><select name="dealstage" >
+                    <option value="1">Appointment Scheduled</option>
+                    <option value="2">Qualified to buy</option>
+                    <option value="3">Presentation Scheduled</option>
+                    <option value="4">Decision Maker bought-in</option>
+                    <option value="5">Contract Sent</option>
+                    <option value="6">Closed Won</option>
+                    <option value="7">Closed Lost</option>
+                  </select><button name="id" value="<%=item.id%>"">Submit</button></form>
+                </th>
+                
+                </tr>
+            
+          <%  }) %>
+        </thead>
+        </table>
+        
+        
+    </body>
+</html>
